@@ -5,11 +5,8 @@ int main()
     int arr[1005];
     int x;
     x=0;
-    while((scanf("%d",&n))!=EOF)
+    while((scanf("%d",&n))!=0)
     {
-        if(n==0)
-            break;
-
         x++;
         sum=0;
         for(i=0; i<n; i++)
