@@ -1,37 +1,50 @@
 #include<bits/stdc++.h>
-
+using namespace std;
+typedef long long ll;
 int main()
 {
-    int n,a[100];
-
-    scanf("%d",&n);
-
-    for(int i=0; i<n; i++)
+    ll n;
+    while(cin>>n)
     {
-        scanf("%d",&a[i]);
-
-    }
-
-    int target,p;
-    int x,y;
-
-    scanf("%d",&target);
-
-    p=target/2;
-
-    for(int i=0; i<n; i++)
-    {
-        if(a[i]>=p)
+        vector<ll>v;
+        for(int i=0; i<n; i++)
         {
-            x=target-a[i];
-            y=a[i];
+            int book;
+            cin>>book;
+            v.push_back(book);
+        }
+        ll money;
+        cin>>money;
+        vector<ll>book_list;
+        for(int i=0; i<n; i++)
+        {
+            for(int j=0; j<n; j++)
+            {
+                if(i!=j)
+                {
+                    ll sum=v[i]+v[j];
+                    if(sum==money)
+                    {
+                        book_list.push_back(v[i]);
+                        book_list.push_back(v[j]);
+                    }
+                }
+            }
         }
 
+        sort(book_list.begin(),book_list.end());
+
+        for(int i=0;i<book_list.size();i++)
+        {
+            ll sum=book_list[i]+book_list[i+1];
+            if(sum==money)
+            {
+                cout<<"Peter should buy books whose prices are ";
+                cout<<book_list[i]<<" and "<<book_list[i+1]<<"."<<endl;
+                break;
+            }
+        }
+        cout<<endl;
     }
-
-    printf("%d %d\n",x,y);
-
-
     return 0;
-
 }
